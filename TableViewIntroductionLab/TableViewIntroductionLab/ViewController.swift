@@ -16,7 +16,6 @@ class ViewController: UIViewController {
     var tasks = [[Task]]() {
         didSet {
             
-            
             // once it gets something(information) it refreshes the view regardless
             tableView.reloadData()
             
@@ -52,7 +51,8 @@ extension ViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         // adds how many cell into the story board
-        return tasks.count
+         // need to add tasks[section], in order to access inside the array of arrays
+        return tasks[section].count
         
        }
     
@@ -70,13 +70,17 @@ extension ViewController : UITableViewDataSource{
         
         
         //where it goes
-        cell.textLabel?.text = "\(task.name) \(task.dueDate)"
-        cell.textLabel?.text = "\(task.dueDate)"
+        cell.textLabel?.text = "\(task.name) "
+        cell.detailTextLabel?.text = "\(task.dueDate)"
             
             
 //        cell.textLabel?.text = "\(tasks.name)  \(tasks.dueDate)"
 //        cell.detailTextLabel?.text = "\(tasks.status)"
         return cell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return tasks.count
     }
     
     
