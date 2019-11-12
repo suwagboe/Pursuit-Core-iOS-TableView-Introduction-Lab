@@ -53,6 +53,9 @@ extension ViewController : UITableViewDataSource{
         
         let task = tasks[indexPath.row]
         
+        cell.textLabel?.text = task.name
+        cell.textLabel?.text = "\(task.dueDate)"
+        cell.textLabel?.text = "\(task.status)"
         
         return cell
     }
