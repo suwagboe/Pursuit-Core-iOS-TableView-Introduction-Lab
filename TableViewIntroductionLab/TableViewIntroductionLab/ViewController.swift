@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     // outlets & variables
     @IBOutlet weak var tableView: UITableView!
    
-    private var task = [Task]() {
+     var tasks = [Task]() {
         didSet {
             tableView.reloadData()
         }
@@ -26,6 +26,9 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         tableView.dataSource = self
 //        loadData()
+        
+        print("There are \(Task.allTasks.count) tasks in total")
+        
     }
     
     /*
@@ -40,13 +43,15 @@ extension ViewController : UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return task.count
+        return tasks.count
        }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath)
+        
+        let task = tasks[indexPath.row]
         
         
         return cell
