@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     // outlets & variables
     @IBOutlet weak var tableView: UITableView!
    
-    private var taskvariable = [Task]() {
+    private var task = [Task]() {
         didSet {
             tableView.reloadData()
         }
@@ -25,14 +25,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         tableView.dataSource = self
-        //loadData()
+//        loadData()
     }
-/*
-     func loadData{
-     taskVariable = task.getSections
-     }
-     */
     
+    /*
+     func loadData() {
+     taskVariable = Task.getSections
+     }
+        */
 
 }
 
@@ -40,7 +40,7 @@ extension ViewController : UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-           return 0
+        return task.count
        }
     
     
