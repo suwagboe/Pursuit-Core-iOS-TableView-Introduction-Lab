@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     // outlets & variables
     @IBOutlet weak var tableView: UITableView!
    
-     var tasks = [Task]() {
+    var tasks = [[Task]]() {
         didSet {
             
             
@@ -34,12 +34,13 @@ class ViewController: UIViewController {
         print("There are \(Task.allTasks.count) tasks in total") // is empty
         
         // giving it the information to use here
-        tasks = Task.allTasks
+        tasks = [Task.allTasks]
     }
     
     /*
      func loadData() {
-     taskVariable = Task.getSections
+     taskVariable =
+     Task.getSections
      }
         */
 
@@ -64,16 +65,24 @@ extension ViewController : UITableViewDataSource{
         
         
         // what info should be used
-        let task = tasks[indexPath.row]
+        //to access array of array use both section and index??
+        let task = tasks[indexPath.section][indexPath.row]
         
         
         //where it goes
-        cell.textLabel?.text = "\(task.name)  \(task.dueDate)"
-        cell.detailTextLabel?.text = "\(task.status)"
-        
+        cell.textLabel?.text = "\(task.name) \(task.dueDate)"
+        cell.textLabel?.text = "\(task.dueDate)"
+            
+            
+//        cell.textLabel?.text = "\(tasks.name)  \(tasks.dueDate)"
+//        cell.detailTextLabel?.text = "\(tasks.status)"
         return cell
     }
     
+    
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return tasks[section].first?.status
+//    }
     
     
 }
