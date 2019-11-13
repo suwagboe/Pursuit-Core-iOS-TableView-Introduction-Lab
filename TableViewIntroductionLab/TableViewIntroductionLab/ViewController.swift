@@ -33,8 +33,8 @@ class ViewController: UIViewController {
         print("There are \(Task.allTasks.count) tasks in total") // is empty
         
         // giving it the information to use here
-        //tasks = Task.filteredTasks
-        tasks = [Task.allTasks]
+        tasks = Task.filteredTask()
+//        tasks = [Task.allTasks]
     }
     
     /*
