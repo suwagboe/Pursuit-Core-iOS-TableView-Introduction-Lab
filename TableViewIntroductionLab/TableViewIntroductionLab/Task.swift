@@ -1,7 +1,7 @@
 import Foundation
 
 struct Task {
-    enum Status {
+    enum Status: String {
         case notStarted
         case inProgress
         case completed
@@ -63,5 +63,12 @@ struct Task {
                  dueDate: dateFormatter.date(from: "04-13-2020")!),
         ]
     }
-
+    
+    
+    
+    // filters task.allTasks to give me the array of arrays of task
+    // to get 3 different arrays
+    //filteredTasks -> [[Task]]
+    
+    
 }

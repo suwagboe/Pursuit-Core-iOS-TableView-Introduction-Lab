@@ -33,6 +33,7 @@ class ViewController: UIViewController {
         print("There are \(Task.allTasks.count) tasks in total") // is empty
         
         // giving it the information to use here
+        //tasks = Task.filteredTasks
         tasks = [Task.allTasks]
     }
     
@@ -84,9 +85,9 @@ extension ViewController : UITableViewDataSource{
     }
     
     
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return tasks[section].first?.status
-//    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return tasks[section].first?.status.rawValue
+    }
     
     
 }
