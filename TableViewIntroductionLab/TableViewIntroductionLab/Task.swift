@@ -1,7 +1,7 @@
 import Foundation
 
 struct Task {
-    enum Status: String {
+    enum Status: String, CaseIterable {
         case notStarted
         case inProgress
         case completed
@@ -64,11 +64,37 @@ struct Task {
         ]
     }
     
-    
-    
+    static func filteredTask() -> [[Task]] {
+        
+        // why do I need rawValue after status what does that really mean
+        let sortedTask = allTasks.sorted { $0.status.rawValue < $1.status.rawValue }
+        
+        // is a set
+        let taskStatus: Set<String> = Set(allTasks.map { $0.status.rawValue })
+        
+        var statusArr = Array(repeating: [Task](), count: taskStatus.count)
+        
+        var currentIndex = 0
+        var currnetStatus = sortedTask.first?.status
+        for status in sortedTask{
+            if status.status == currnetStatus {
+                statusArr[currentIndex].append(status)
+            }
+         else {
+            currentIndex += 1
+            currnetStatus = status.status
+                statusArr[currentIndex].append(status)
+//                sectionsArr[currentIndex].append(country)
+        }
+        }
     // filters task.allTasks to give me the array of arrays of task
     // to get 3 different arrays
     //filteredTasks -> [[Task]]
     
-    
+    return statusArr
+}
+
+
+
+
 }
